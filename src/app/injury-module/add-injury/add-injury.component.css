@@ -1,0 +1,29 @@
+.error {
+    border-color: red;
+  }
+  
+  .error-message {
+    color: red;
+  }
+
+  .alert-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .alert {
+    width: 350px;
+  }
+
+  .alertSuccess {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+  }
+
+  .alertDanger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }
+  

@@ -1,0 +1,9 @@
+.table-column {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .row-edit {
+    margin-bottom: 4px;
+  }

@@ -1,0 +1,21 @@
+
+<div class="container">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <div class="card" style="margin-top: 80px;">
+          <div class="card-header">
+            <h4 class="card-title">Your training calander</h4>
+          </div>
+          <div class="card-body" >
+            <div class="row">
+              <div class="col-md-12">
+                <div class="calendar-container">
+                  <full-calendar #calendar [options]="calendarOptions" (eventClick)="handleEventClick($event)" (dateClick)="handleDateClick($event)"></full-calendar>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

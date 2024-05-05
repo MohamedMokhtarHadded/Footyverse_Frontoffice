@@ -1,0 +1,90 @@
+ <!--************************************
+                      Top Rated Player End
+              *************************************-->
+ <!--************************************
+                      Points Table Start
+              *************************************-->
+ <section class=" tg-haslayout tg-bgstyletwo">
+   <div class="tg-bgboxone"></div>
+   <div class="tg-bgboxtwo"></div>
+   <div class="tg-bgpattrant">
+     <div class="container my-3">
+       <div class="row">
+         <div class="tg-pointstablewrapper">
+           <div class="col-11 col-xs-12">
+             <div class="tg-pointstable">
+               <div class="tg-section-heading">
+                 <h2>MEDICAL HISTORY</h2>
+               </div>
+               <div id="tg-pointstable" class="tg-pointstable table-margin">
+                 <div class="swiper-slide">
+                   <div class="tg-pointtable row-edit">
+                     <div class="tg-box">
+                       <h6> <b>Injury informations</b></h6>
+                     </div>
+                     <div class="tg-box">
+                       <h6> <b>Treatment</b></h6>
+                     </div>
+                     <div class="tg-box">
+                       <h6> <b>Diagnosis</b></h6>
+                     </div>
+                     <div class="tg-box">
+                       <h6> <b>Recover time</b></h6>
+                     </div>
+                     <div class="tg-box">
+                       <h6> <b>Return date</b></h6>
+                     </div>
+                     <div class="tg-box">
+                       <h6> <b>MORE DETAILS</b></h6>
+                     </div>
+                   </div>
+                 </div>
+                 <div *ngFor="let injury of injuries">
+                   <div class="swiper-slide">
+                     <div class="tg-pointtable row-edit">
+                       <div class="tg-box">
+                         <h6>{{injury.injuryType}} injured at: {{injury.date | date: 'fullDate'}}</h6>
+                       </div>
+                       <div class="tg-box">
+                         <h6>{{injury.treatment}}</h6>
+                       </div>
+                       <div class="tg-box">
+                         <h6>{{injury.diagnosis}}</h6>
+                       </div>
+                       <div class="tg-box">
+                         <h6>{{injury.time}} days</h6>
+                       </div>
+                       <div class="tg-box">
+                         <h6>{{injury.returnDate | date: 'fullDate'}}</h6>
+                       </div>
+                       <div class="tg-box">
+                         <!-- style="display: flex;"
+                         <button mat-icon-button color="primary" (click)="editInjury(injury._id)">
+                           <mat-icon>edit</mat-icon>
+                         </button>
+                         <button mat-icon-button color="warn" class="me-2" (click)="deleteInjury(injury._id)">
+                           <mat-icon>delete</mat-icon>
+                         </button> -->
+                         <button mat-icon-button class="me-2" (click)="viewInjury(injury._id)">
+                           <mat-icon>note_add</mat-icon>
+                         </button>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <!--
+               <div class="tg-btnbox">
+                 <a class="tg-btn" routerLink="/injury/addInjury/"><span>Add injury</span></a>
+               </div> -->
+             </div>
+           </div>
+
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!--************************************
+                                Points Table End
+                        *************************************-->

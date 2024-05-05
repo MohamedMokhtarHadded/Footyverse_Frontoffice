@@ -1,0 +1,529 @@
+<!--************************************
+			Wrapper Start
+	*************************************-->
+    <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+
+        <!--************************************
+                            Banner Start
+                    *************************************-->
+        <div class="tg-banner tg-haslayout">
+          <div class="tg-imglayer">
+            <img src="assets/images/bg-pattran.png" alt="image desctription">
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="tg-banner-content tg-haslayout">
+                <div class="tg-pagetitle">
+                  <h1>Edit training</h1>
+                </div>
+                <ol class="tg-breadcrumb">
+                  <li><a href="#">Edit Data</a></li>
+                  <li class="active">below</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--************************************
+                            Banner End
+                    *************************************-->
+        <!--************************************
+                            Main Start
+                    *************************************-->
+        <main id="tg-main" class="tg-main tg-paddingbottom-zero tg-haslayout">
+          <section class="tg-main-section tg-paddingbottom-zero tg-haslayout">
+            <div class="container">
+              <div class="tg-section-name">
+                <h2>Edit Training</h2>
+              </div>
+              <div class="col-sm-11 col-xs-11 pull-right">
+                <div class="row">
+                  <div class="tg-contactus tg-haslayout">
+                    <div class="row">
+      
+                      <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="tg-contactinfobox">
+                          <div class="tg-section-heading">
+                            <h2>Record Training</h2>
+                          </div>
+                          <div class="tg-description">
+                            <p>Enter changes of the training here and click the submit button to update 
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+      
+      
+                      <div class="col-md-9 col-sm-12 col-xs-12">
+                        <form class="tg-commentform help-form" id="tg-commentform" [formGroup]="trainingForm"
+                         (ngSubmit)="onSubmit()" >
+      
+                          <fieldset>
+      
+                            <div class="form-group">
+                              <label> <strong>Date of the training:</strong> </label>
+                              <input type="date" formControlName="date" class="form-control">
+                              <div *ngIf="trainingForm.get('date')?.invalid && (trainingForm.get('date')?.dirty || trainingForm.get('date')?.touched)">
+                                <div *ngIf="trainingForm.get('date')?.errors?.['required']" class="error-message">Date of training is required</div>
+                              </div>
+                            </div>
+
+
+                      
+      
+                            <div class="form-group">
+                              <label> <strong>Training duration (in minutes):</strong> </label>
+                              <input type="number" placeholder="Training duration*" formControlName="duration"
+                                class="form-control">
+                              <!-- <div
+                                *ngIf="trainingForm.get('recoveryTime')?.invalid && (trainingForm.get('recoveryTime')?.dirty || trainingForm.get('recoveryTime')?.touched)">
+                                <div *ngIf="trainingForm.get('recoveryTime')?.errors?.['required']" class="error-message">
+                                  Recovery time is required</div>
+                              </div> -->
+                            </div>
+      
+                            <div class="form-group">
+                              <label for="trainingType"> <strong>Select training Type:</strong></label>
+                              <div class="tg-select">
+                                <select formControlName="trainingType">
+                                  <option value="">Training type</option>
+                                  <option value="Physical Training">Physical Training</option>
+                                  <option value="Tactical Training">Tactical Training</option>
+                                  <option value="Technical Training">Technical Training</option>
+                                  <option value="Goalkeeper Training">Goalkeeper Training</option>
+                                </select>
+                                <!-- <div
+                                  *ngIf="trainingForm.get('injuryType')?.invalid && (trainingForm.get('injuryType')?.dirty || trainingForm.get('injuryType')?.touched)">
+                                  <div *ngIf="trainingForm.get('injuryType')?.errors?.['required']" class="error-message">Select
+                                    injury type is required</div>
+                                </div>  -->
+                              </div>
+                            </div>
+      
+                            <div class="form-group">
+                              <label for="trainingType"> <strong>Select exercise type:</strong></label>
+                              <div class="tg-select">
+                                <select formControlName="exercises" class="custom-select" multiple>
+                                  <option value="">Select exercises</option>
+                                  <option *ngFor="let exercise of exercices" [value]="exercise._id">
+                                   <b>{{ exercise.name }}</b> (Difficulty: {{ exercise.difficultyLevel }}, Duration: {{ exercise.durationMinutes }} minutes, Position: {{ exercise.position }})
+                                  </option>
+                                </select>
+                              </div>
+      
+                              <!-- <div
+                                  *ngIf="trainingForm.get('injuryType')?.invalid && (trainingForm.get('injuryType')?.dirty || trainingForm.get('injuryType')?.touched)">
+                                  <div *ngIf="trainingForm.get('injuryType')?.errors?.['required']" class="error-message">Select
+                                    injury type is required</div>
+                                </div>  -->
+                            </div>
+      
+                            <div class="form-group">
+                              <label> <strong>Notes:</strong> </label>
+      
+                              <textarea formControlName="notes" placeholder="Notes"></textarea>
+                              <!-- <div
+                                *ngIf="trainingForm.get('description')?.invalid && (trainingForm.get('description')?.dirty || trainingForm.get('description')?.touched)">
+                                <div *ngIf="trainingForm.get('description')?.errors?.['required']" class="error-message">
+                                  Description is required</div> 
+                              </div>-->
+                            </div>
+      
+                            <div class="form-group">
+                              <button class="tg-btn" type="submit">Edit</button>
+                            </div>
+      
+                          </fieldset>
+                        </form>
+                      </div>
+      
+                      <div id="tg-officeaddressslider" class="tg-officeaddressslider tg-officeaddressnav owl-carousel">
+                        <div class="item">
+                          <span class="tg-theme-tag">SWEEPER</span>
+                          <div class="tg-section-heading">
+                            <h2>Manchester, UK</h2>
+                          </div>
+                          <ul class="tg-contactinfo">
+                            <li>
+                              <i class="fa fa-map-marker"></i>
+                              <address>123 Eccles Old Road, New Salford Road London, Uk, M6 7AF</address>
+                            </li>
+                            <li>
+                              <i class="fa fa-phone"></i>
+                              <span>+44 123 456 788 - 9</span>
+                            </li>
+                            <li>
+                              <i class="fa fa-envelope-o"></i>
+                              <span>info@domain.com</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="item">
+                          <span class="tg-theme-tag">Media Enquiry</span>
+                          <div class="tg-section-heading">
+                            <h2>Bolton, UK</h2>
+                          </div>
+                          <ul class="tg-contactinfo">
+                            <li>
+                              <i class="fa fa-map-marker"></i>
+                              <address>123 Eccles Old Road, New Salford Road London, Uk, M6 7AF</address>
+                            </li>
+                            <li>
+                              <i class="fa fa-phone"></i>
+                              <span>+44 123 456 788 - 9</span>
+                            </li>
+                            <li>
+                              <i class="fa fa-envelope-o"></i>
+                              <span>info@domain.com</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="item">
+                          <span class="tg-theme-tag">Club Registration</span>
+                          <div class="tg-section-heading">
+                            <h2>Warrington, UK</h2>
+                          </div>
+                          <ul class="tg-contactinfo">
+                            <li>
+                              <i class="fa fa-map-marker"></i>
+                              <address>123 Eccles Old Road, New Salford Road London, Uk, M6 7AF</address>
+                            </li>
+                            <li>
+                              <i class="fa fa-phone"></i>
+                              <span>+44 123 456 788 - 9</span>
+                            </li>
+                            <li>
+                              <i class="fa fa-envelope-o"></i>
+                              <span>info@domain.com</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="item">
+                          <span class="tg-theme-tag">SWEEPER</span>
+                          <div class="tg-section-heading">
+                            <h2>Manchester, UK</h2>
+                          </div>
+                          <ul class="tg-contactinfo">
+                            <li>
+                              <i class="fa fa-map-marker"></i>
+                              <address>123 Eccles Old Road, New Salford Road London, Uk, M6 7AF</address>
+                            </li>
+                            <li>
+                              <i class="fa fa-phone"></i>
+                              <span>+44 123 456 788 - 9</span>
+                            </li>
+                            <li>
+                              <i class="fa fa-envelope-o"></i>
+                              <span>info@domain.com</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tg-mapcontent" class="tg-mapcontent owl-carousel">
+              <div class="item">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.8070273775697!2d-0.13298118405677026!3d51.516756217839884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2d06098567%3A0x657781e4c62dccae!2s14+Tottenham+Court+Rd%2C+Fitzrovia%2C+London+W1T+1JY%2C+UK!5e0!3m2!1sen!2s!4v1468332667385"></iframe>
+              </div>
+              <div class="item">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2490.0010946428147!2d-2.3645922841588!3d51.384657927491055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487181149eed3bff%3A0x3aaf87fd82220875!2s3+Edgar+Buildings+George+St%2C+Bath%2C+Bath+and+North+East+Somerset+BA1+2FJ%2C+UK!5e0!3m2!1sen!2s!4v1468332753250"></iframe>
+              </div>
+              <div class="item">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2234.9551750898822!2d-3.212455184020526!3d55.93281498556128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c70c0bdf6d55%3A0x4129ca60bdbbdb2d!2s46+Morningside+Rd%2C+Edinburgh+EH10+4BF%2C+UK!5e0!3m2!1sen!2s!4v1468332796662"></iframe>
+              </div>
+              <div class="item">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.8450413820606!2d-1.9012604841263068!3d52.48194134680125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bc8e7d47e945%3A0x936a2fd5f8da0a2b!2s27+Colmore+Row%2C+Birmingham%2C+West+Midlands+B3+2EW%2C+UK!5e0!3m2!1sen!2s!4v1468332833565"></iframe>
+              </div>
+            </div>
+          </section>
+        </main>
+        <!--************************************
+                            Main End
+                    *************************************-->
+      
+      
+      
+        <!--************************************
+                            Footer Start
+                    *************************************-->
+        <footer id="tg-footer" class="tg-footer tg-haslayout">
+          <div class="tg-haslayout tg-footerinfobox">
+            <div class="tg-bgboxone"></div>
+            <div class="tg-bgboxtwo"></div>
+            <div class="tg-footerinfo">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="tg-footercol">
+                      <div class="tg-posttitle">
+                        <h3>signup newsletter</h3>
+                      </div>
+                      <div class="tg-description">
+                        <p>Adipisicing elit, sed do eiusmod tempor incidunta utiai labore et dolore magna si aliqua quis.</p>
+                      </div>
+                      <form class="tg-form-newsletter">
+                        <fieldset>
+                          <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                          </div>
+                          <button class="tg-btn" type="submit">signup</button>
+                        </fieldset>
+                      </form>
+                      <div class="tg-posttitle">
+                        <h3>popular tags</h3>
+                      </div>
+                      <div class="tg-tags">
+                        <a class="tg-tag" href="#">fashion</a>
+                        <a class="tg-tag" href="#">travel</a>
+                        <a class="tg-tag" href="#">blog</a>
+                        <a class="tg-tag" href="#">sports</a>
+                        <a class="tg-tag" href="#">magazine</a>
+                        <a class="tg-tag" href="#">ui</a>
+                        <a class="tg-tag" href="#">tech</a>
+                        <a class="tg-tag" href="#">fun time</a>
+                        <a class="tg-tag" href="#">soccer</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="tg-footercol">
+                      <div class="tg-posttitle">
+                        <h3>Top products</h3>
+                      </div>
+                      <div class="tg-toprated">
+                        <ul>
+                          <li>
+                            <figure>
+                              <a href="#">
+                                <img src="assets/images/thumbnails/img-04.jpg" alt="image description">
+                              </a>
+                            </figure>
+                            <div class="tg-productcontent">
+                              <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                              <span class="tg-price">Price: $67</span>
+                            </div>
+                          </li>
+                          <li>
+                            <figure>
+                              <a href="#">
+                                <img src="assets/images/thumbnails/img-05.jpg" alt="image description">
+                              </a>
+                            </figure>
+                            <div class="tg-productcontent">
+                              <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                              <span class="tg-price">Price: $67</span>
+                            </div>
+                          </li>
+                          <li>
+                            <figure>
+                              <a href="#">
+                                <img src="assets/images/thumbnails/img-06.jpg" alt="image description">
+                              </a>
+                            </figure>
+                            <div class="tg-productcontent">
+                              <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                              <span class="tg-price">Price: $67</span>
+                            </div>
+                          </li>
+                          <li>
+                            <figure>
+                              <a href="#">
+                                <img src="assets/images/thumbnails/img-07.jpg" alt="image description">
+                              </a>
+                            </figure>
+                            <div class="tg-productcontent">
+                              <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                              <span class="tg-price">Price: $67</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="tg-footercol">
+                      <div class="tg-haslayout">
+                        <strong class="tg-logo">
+                          <a href="#">
+                            <img src="assets/images/logo2.png" alt="image description">
+                          </a>
+                        </strong>
+                      </div>
+                      <div class="tg-description">
+                        <p>Consectetur adipisicing elit sedtado eiusmod dunt ut labore et dolore magna aliqua enim minim
+                          veniami quis nostrud.</p>
+                      </div>
+                      <ul class="tg-contactinfo">
+                        <li>
+                          <i class="fa fa-home"></i>
+                          <address>123 Eccles Old Road, New Salford Road London, Uk, M6 7AF</address>
+                        </li>
+                        <li>
+                          <i class="fa fa-envelope-o"></i>
+                          <a href="info%40domain.html">info@domain.com</a>
+                        </li>
+                        <li>
+                          <i class="fa fa-phone"></i>
+                          <span>+44 123 456 788 - 9</span>
+                        </li>
+                      </ul>
+                      <div class="tg-haslayout">
+                        <a class="tg-btn" href="#">read more</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tg-footerbar">
+            <div class="container">
+              <span class="tg-copyright"><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span>
+              <nav class="tg-footernav">
+                <ul>
+                  <li><a href="#">Main</a></li>
+                  <li><a href="#">Team</a></li>
+                  <li><a href="#">Buy Tickets</a></li>
+                  <li><a href="#">Match Results</a></li>
+                  <li><a href="#">Upcoming Matches</a></li>
+                  <li><a href="#">Shop</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </footer>
+        <!--************************************
+                            Footer End
+                    *************************************-->
+      </div>
+      <!--************************************
+                        Wrapper End
+                *************************************-->
+      <!--************************************
+                        Search Start
+                *************************************-->
+      <div class="tg-searchbox">
+        <a id="tg-close-search" class="tg-close-search" href="javascript:void(0)"><span class="fa fa-close"></span></a>
+        <div class="tg-searcharea">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <form class="tg-form-search">
+                  <fieldset>
+                    <input type="search" class="form-control" placeholder="keyword">
+                    <i class="icon-icon_search2"></i>
+                  </fieldset>
+                </form>
+                <p>Start typing and press Enter to search</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--************************************
+                        Search End
+                *************************************-->
+      <!--************************************
+                    LightBoxes Start
+                *************************************-->
+      <div class="tg-modalbox modal fade" id="tg-login" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="tg-modal-content">
+            <div class="tg-formarea">
+              <div class="tg-border-heading">
+                <h3>Login</h3>
+              </div>
+              <form class="tg-loginform" method="post">
+                <fieldset>
+                  <div class="form-group">
+                    <input type="text" name="userName/email" class="form-control" placeholder="username/email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="password">
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" value="rememberme" class="checkbox">
+                      <em>Remember Me</em>
+                    </label>
+                    <a href="#">
+                      <em>Forgot Password</em>
+                      <i class="fa fa-question-circle"></i>
+                    </a>
+                  </div>
+                  <div class="form-group">
+                    <button class="tg-btn tg-btn-lg" type="submit">Login Now</button>
+                  </div>
+                  <div class="tg-description">
+                    <p>Don't have an account? <a href="#">Signup</a></p>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+            <div class="tg-logintype">
+              <div class="tg-border-heading">
+                <h3>Login with</h3>
+              </div>
+              <ul>
+                <li class="tg-facebook"><a href="#">facebook</a></li>
+                <li class="tg-twitter"><a href="#">twitter</a></li>
+                <li class="tg-googleplus"><a href="#">google+</a></li>
+                <li class="tg-linkedin"><a href="#">linkedin</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tg-modalbox modal fade" id="tg-register" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="tg-modal-content">
+            <div class="tg-formarea">
+              <div class="tg-border-heading">
+                <h3>Signup</h3>
+              </div>
+              <form class="tg-loginform" method="post">
+                <fieldset>
+                  <div class="form-group">
+                    <input type="text" name="userName" class="form-control" placeholder="username">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="email">
+                  </div>
+                  <div class="form-group">
+                    <div class="tg-note">
+                      <i class="fa fa-exclamation-circle"></i>
+                      <span>We will email you your password.</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button class="tg-btn tg-btn-lg" type="submit">Login Now</button>
+                  </div>
+                  <div class="tg-description">
+                    <p>Already have an account? <a href="#">Login</a></p>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+            <div class="tg-logintype">
+              <div class="tg-border-heading">
+                <h3>Signup with</h3>
+              </div>
+              <ul>
+                <li class="tg-facebook"><a href="#">facebook</a></li>
+                <li class="tg-twitter"><a href="#">twitter</a></li>
+                <li class="tg-googleplus"><a href="#">google+</a></li>
+                <li class="tg-linkedin"><a href="#">linkedin</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      

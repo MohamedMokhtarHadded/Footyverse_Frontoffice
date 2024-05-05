@@ -1,0 +1,9 @@
+/* calendar.component.css */
+.fc-event-title {
+    font-size: 18px; /* Adjust the font size as needed */
+  }
+      
+  .fc-day {
+    background-color: lightblue; /* Change the background color */
+    color: black; /* Change the text color */
+  }

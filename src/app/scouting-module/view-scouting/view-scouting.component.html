@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of Player / News</title>
+  <!-- Add your CSS links here -->
+</head>
+<body>
+  <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+    <!-- Banner Start -->
+    <div class="tg-banner tg-haslayout">
+      <div class="tg-imglayer">
+        <img src="assets/images/bg-pattran.png" alt="image desctription">
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="tg-banner-content tg-haslayout">
+            <div class="tg-pagetitle">
+              <h1>List of Player / News</h1>
+            </div>
+            <ol class="tg-breadcrumb">
+              <li><a href="#">Home</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="tg-main" class="tg-main tg-haslayout">
+      <button class="tg-btn btn btn-update-custom" (click)="navigateToCalendar()"> Upcoming Events  </button>
+
+      <div class="container">
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Search by Playername" class="search-input form-control-lg" />
+      </div>
+      <div class="tg-main-section tg-haslayout">
+        <div class="container">
+          <div class="row justify-content-center align-items-center" style="min-height: 80vh;"> <!-- Centering vertically and horizontally -->
+            <div class="col-sm-11 col-xs-11">
+              <div class="tg-blogpost tg-blogpostlist">
+                <div class="list-container">
+                  <div class="list-item" *ngFor="let element of paginatedDataSource">
+                    <div class="player-info">
+                      <!-- <   -->
+                      <h4>Playername: {{ element.playername }}</h4>
+                      <p>Position: {{ element.position }}</p>
+                      <p>Age: {{ element.age }}</p>
+                      <p>Rate: {{ element.rate }}</p>
+                      <p>Power: {{ element.power }}</p>
+                      <p>Weaknesses: {{ element.weaknesses }}</p>
+                      <p>Description: {{ element.description }}</p>
+                      <p>Potential: {{ element.potential }}</p>
+                    </div>
+                    <div class="action-buttons">
+                      <button class="tg-btn btn btn-update-custom" (click)="navigateToDetailScouting(element._id)">Details And History</button>
+                      
+        
+
+                    </div>
+                  </div>
+                </div>
+                <!-- Pagination controls -->
+                <div class="tg-pagination">
+                  <button class="btn btn-secondary custom-pagination-btn" *ngFor="let page of pages" (click)="goToPage(page)">
+                    {{ page + 1 }}
+                  </button>
+                </div>
+                
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section to display player statistics -->
+     
+    </main>
+
+    <footer id="tg-footer" class="tg-footer tg-haslayout">
+      <div class="tg-haslayout tg-footerinfobox">
+        <div class="tg-bgboxone"></div>
+        <div class="tg-bgboxtwo"></div>
+        <div class="tg-footerinfo">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <!-- Newsletter signup -->
+              </div>
+              <div class="col-sm-4">
+                <!-- Top products -->
+              </div>
+              <div class="col-sm-4">
+                <!-- Contact info -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tg-footerbar">
+        <div class="container">
+          <span class="tg-copyright"><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></span>
+          <nav class="tg-footernav">
+            <ul>
+              <li><a href="#">Main</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Buy Tickets</a></li>
+              <li><a href="#">Match Results</a></li>
+              <li><a href="#">Upcoming Matches</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!--************************************
+      Footer End
+  *************************************-->
+  <!--
+  <div class="container">
+    <button class="btn btn-primary" (click)="navigateToAddScouting()">Add Scouting</button>
+  </div>
+  -->
+
+  <div class="tg-modalbox modal fade" id="tg-login" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="tg-modal-content">
+        <div class="tg-formarea">
+          <div class="tg-border-heading">
+            <h3>Login</h3>
+          </div>
+          <form class="tg-loginform" method="post">
+            <fieldset>
+              <div class="form-group">
+                <input type="text" name="userName/email" class="form-control" placeholder="username/email">
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="password">
+              </div>
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" value="rememberme" class="checkbox">
+                  <em>Remember Me</em>
+                </label>
+                <a href="#">
+                  <em>Forgot Password</em>
+                  <i class="fa fa-question-circle"></i>
+                </a>
+              </div>
+              <div class="form-group">
+                <button class="tg-btn tg-btn-lg" type="submit">Login Now</button>
+              </div>
+              <div class="tg-description">
+                <p>Don't have an account? <a href="#">Signup</a></p>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class="tg-logintype">
+          <div class="tg-border-heading">
+            <h3>Login with</h3>
+          </div>
+          <ul>
+            <li class="tg-facebook"><a href="#">facebook</a></li>
+            <li class="tg-twitter"><a href="#">twitter</a></li>
+            <li class="tg-googleplus"><a href="#">google+</a></li>
+            <li class="tg-linkedin"><a href="#">linkedin</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tg-modalbox modal fade" id="tg-register" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="tg-modal-content">
+        <div class="tg-formarea">
+          <div class="tg-border-heading">
+            <h3>Signup</h3>
+          </div>
+          <form class="tg-loginform" method="post">
+            <fieldset>
+              <div class="form-group">
+                <input type="text" name="userName" class="form-control" placeholder="username">
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="email">
+              </div>
+              <div class="form-group">
+                <div class="tg-note">
+                  <i class="fa fa-exclamation-circle"></i>
+                  <span>We will email you your password.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <button class="tg-btn tg-btn-lg" type="submit">Login Now</button>
+              </div>
+              <div class="tg-description">
+                <p>Already have an account? <a href="#">Login</a></p>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+        <div class="tg-logintype">
+          <div class="tg-border-heading">
+            <h3>Signup with</h3>
+          </div>
+          <ul>
+            <li class="tg-facebook"><a href="#">facebook</a></li>
+            <li class="tg-twitter"><a href="#">twitter</a></li>
+            <li class="tg-googleplus"><a href="#">google+</a></li>
+            <li class="tg-linkedin"><a href="#">linkedin</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--************************************
+    LightBoxes End
+  *************************************-->

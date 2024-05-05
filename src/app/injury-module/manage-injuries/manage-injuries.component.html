@@ -1,0 +1,333 @@
+<!--************************************
+			Wrapper Start
+	*************************************-->
+  <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+
+    <!--************************************
+                        Banner Start
+                *************************************-->
+    <div class="tg-banner tg-haslayout">
+      <div class="tg-imglayer">
+        <img src="assets/images/bg-pattran.png" alt="image desctription">
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="tg-banner-content tg-haslayout">
+            <div class="tg-pagetitle">
+              <h1>Injury list</h1>
+            </div>
+            <ol class="tg-breadcrumb">
+              <li><a href="#">Injured players</a></li>
+              <li class="active">history</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--************************************
+                        Banner End
+                *************************************-->
+  
+  
+  
+  
+  
+    <section class=" tg-haslayout tg-bgstyletwo">
+      <div class="tg-bgboxone"></div>
+      <div class="tg-bgboxtwo"></div>
+      <div class="tg-bgpattrant">
+        <div class="container my-3">
+          <div class="row">
+            <div class="tg-pointstablewrapper">
+              <div class="col-12 col-xs-12">
+                <div class="tg-pointstable">
+  
+                  <div class="tg-section-heading d-flex" style="position: relative;">
+                    <h2 class="pt-3">INJURED PLAYERS HISTORY</h2>
+                    <div style="position: absolute; left: 50%; transform: translateX(-50%);">
+                      <input type="text" class="form-control" name="search" placeholder="search" [(ngModel)]="searchText" (ngModelChange)="applyFilter()">
+                    </div>
+  
+                    <div class="ms-auto">
+                      <select [(ngModel)]="selectedOption" (ngModelChange)="filterInjuries()" value="injured">
+                        <option value="all">All</option>
+                        <option value="injured">Injured</option>
+                        <option value="recovered">Recovered</option>
+                      </select>
+                    </div>
+  
+                  </div>
+  
+                  <div id="tg-pointstable" class="tg-pointstable table-margin">
+                    <div class="swiper-slide">
+                      <div class="tg-pointtable row-edit">
+                        <div class="tg-box">
+                          <h6> <b>Player</b></h6>
+                        </div>
+                        <div class="tg-box">
+                          <h6> <b>Injury type</b></h6>
+                        </div>
+                        <div class="tg-box">
+                          <h6> <b>Recover time</b></h6>
+                        </div>
+                        <div class="tg-box">
+                          <h6> <b>Return date</b></h6>
+                        </div>
+                        <div class="tg-box">
+                          <h6> <b>Status</b></h6>
+                        </div>
+                        <div class="tg-box">
+                          <h6> <b>ACTIONS</b></h6>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div *ngIf="filteredInjuries.length === 0">
+                      <div class="swiper-slide">
+                        <div class="tg-pointtable row-edit d-flex justify-content-center">
+                          <div class="tg-box d-flex justify-content-center">
+                            <h6 style="color: red;"> No injuries found</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div *ngFor="let injury of filteredInjuries">
+                      <div class="swiper-slide">
+                        <div class="tg-pointtable row-edit">
+                          <div class="tg-box d-flex align-items-center">
+                            <img class="ms-3"
+                              src="http://localhost:3000/images/{{injury.player.avatar}}"
+                              alt="Youssef Msakni" width="70px;">
+                            <h6 class="ms-3"> {{injury.player.firstName}} {{injury.player.lastName}}, Injured: {{injury.date | date: 'fullDate'}}</h6>
+                          </div>
+                          <div class="tg-box">
+                            <h6>{{injury.injuryType}}</h6>
+                          </div>
+                          <div class="tg-box">
+                            <h6>{{injury.time}} days</h6>
+                          </div>
+                          <div class="tg-box">
+                            <h6>{{injury.returnDate | date: 'fullDate'}}</h6>
+                          </div>
+  
+                          <div class="tg-box d-flex justify-content-center"
+                            *ngIf="isReturnDateBeforeCurrentDate(injury.returnDate)">
+                            <div class="available">
+                              Available
+                            </div>
+                          </div>
+  
+                          <div class="tg-box d-flex justify-content-center"
+                            *ngIf="!isReturnDateBeforeCurrentDate(injury.returnDate)">
+                            <div class="injured">
+                              Injured
+                            </div>
+                          </div>
+  
+                          <div class="tg-box" style="display: flex;">
+                            <button mat-icon-button class="me-2" (click)="viewInjury(injury._id)">
+                              <mat-icon>note_add</mat-icon>
+                            </button>
+                            <button mat-icon-button color="primary" (click)="editInjury(injury._id)">
+                              <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" class="me-2" (click)="openDeleteDialog(injury._id)">
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tg-btnbox d-flex justify-content-center">
+                    <a class="tg-btn" routerLink="/injury/addInjury"><span>Add injury</span></a>
+                    <a class="tg-btn ms-2" (click)="generatePDF()"><span>Export as PDF</span></a>
+                  </div>
+                  
+                  <!-- <button (click)="generatePDF()">Export as PDF</button> -->
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!--************************************
+                        Main Start
+                  *************************************-->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <!--************************************
+                        Footer Start
+                *************************************-->
+    <footer id="tg-footer" class="tg-footer tg-haslayout">
+      <div class="tg-haslayout tg-footerinfobox">
+        <div class="tg-bgboxone"></div>
+        <div class="tg-bgboxtwo"></div>
+        <div class="tg-footerinfo">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="tg-footercol">
+                  <div class="tg-posttitle">
+                    <h3>signup newsletter</h3>
+                  </div>
+                  <div class="tg-description">
+                    <p>Adipisicing elit, sed do eiusmod tempor incidunta utiai labore et dolore magna si
+                      aliqua quis.</p>
+                  </div>
+                  <form class="tg-form-newsletter">
+                    <fieldset>
+                      <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                      </div>
+                      <button class="tg-btn" type="submit">signup</button>
+                    </fieldset>
+                  </form>
+                  <div class="tg-posttitle">
+                    <h3>popular tags</h3>
+                  </div>
+                  <div class="tg-tags">
+                    <a class="tg-tag" href="#">fashion</a>
+                    <a class="tg-tag" href="#">travel</a>
+                    <a class="tg-tag" href="#">blog</a>
+                    <a class="tg-tag" href="#">sports</a>
+                    <a class="tg-tag" href="#">magazine</a>
+                    <a class="tg-tag" href="#">ui</a>
+                    <a class="tg-tag" href="#">tech</a>
+                    <a class="tg-tag" href="#">fun time</a>
+                    <a class="tg-tag" href="#">soccer</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="tg-footercol">
+                  <div class="tg-posttitle">
+                    <h3>Top products</h3>
+                  </div>
+                  <div class="tg-toprated">
+                    <ul>
+                      <li>
+                        <figure>
+                          <a href="#">
+                            <img src="assets/images/thumbnails/img-04.jpg" alt="image description">
+                          </a>
+                        </figure>
+                        <div class="tg-productcontent">
+                          <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                          <span class="tg-price">Price: $67</span>
+                        </div>
+                      </li>
+                      <li>
+                        <figure>
+                          <a href="#">
+                            <img src="assets/images/thumbnails/img-05.jpg" alt="image description">
+                          </a>
+                        </figure>
+                        <div class="tg-productcontent">
+                          <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                          <span class="tg-price">Price: $67</span>
+                        </div>
+                      </li>
+                      <li>
+                        <figure>
+                          <a href="#">
+                            <img src="assets/images/thumbnails/img-06.jpg" alt="image description">
+                          </a>
+                        </figure>
+                        <div class="tg-productcontent">
+                          <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                          <span class="tg-price">Price: $67</span>
+                        </div>
+                      </li>
+                      <li>
+                        <figure>
+                          <a href="#">
+                            <img src="assets/images/thumbnails/img-07.jpg" alt="image description">
+                          </a>
+                        </figure>
+                        <div class="tg-productcontent">
+                          <h4><a href="#">Smooth 3-Stripes Scarf</a></h4><span class="tg-stars"><span></span></span>
+                          <span class="tg-price">Price: $67</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="tg-footercol">
+                  <div class="tg-haslayout">
+                    <strong class="tg-logo">
+                      <a href="#">
+                        <img src="assets/images/logo2.png" alt="image description">
+                      </a>
+                    </strong>
+                  </div>
+                  <div class="tg-description">
+                    <p>Consectetur adipisicing elit sedtado eiusmod dunt ut labore et dolore magna aliqua
+                      enim minim
+                      veniami quis nostrud.</p>
+                  </div>
+                  <ul class="tg-contactinfo">
+                    <li>
+                      <i class="fa fa-home"></i>
+                      <address>123 Eccles Old Road, New Salford Road London, Uk, M6 7AF</address>
+                    </li>
+                    <li>
+                      <i class="fa fa-envelope-o"></i>
+                      <a href="info%40domain.html">info@domain.com</a>
+                    </li>
+                    <li>
+                      <i class="fa fa-phone"></i>
+                      <span>+44 123 456 788 - 9</span>
+                    </li>
+                  </ul>
+                  <div class="tg-haslayout">
+                    <a class="tg-btn" href="#">read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tg-footerbar">
+        <div class="container">
+          <span class="tg-copyright"><a target="_blank" href="https://www.templateshub.net">Templates
+              Hub</a></span>
+          <nav class="tg-footernav">
+            <ul>
+              <li><a href="#">Main</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Buy Tickets</a></li>
+              <li><a href="#">Match Results</a></li>
+              <li><a href="#">Upcoming Matches</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+    <!--************************************
+                        Footer End
+                *************************************-->
+  </div>
+  <!--************************************
+                    Wrapper End
+            *************************************-->
