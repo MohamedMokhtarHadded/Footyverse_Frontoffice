@@ -7,7 +7,7 @@ import { Stats } from 'src/models/Stats';
   providedIn: 'root'
 })
 export class StatsService {
-  private baseUrl = 'http://localhost:3000/stats';
+  private baseUrl = 'https://footyverse-backend.onrender.com/stats';
 
   constructor(private http: HttpClient) { }
 

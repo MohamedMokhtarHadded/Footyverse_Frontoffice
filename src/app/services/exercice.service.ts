@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ExerciceService {
   
-  private baseUrl = 'http://localhost:3000/exercise';
+  private baseUrl = 'https://footyverse-backend.onrender.com/exercise';
 
   constructor(private http: HttpClient) { }
 

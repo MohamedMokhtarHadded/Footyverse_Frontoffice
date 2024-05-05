@@ -8,7 +8,7 @@ import { scouting } from 'src/models/scouting';
     providedIn: 'root'
 })
 export class ScoutingService {
-    private baseUrl = 'http://localhost:3000';
+    private baseUrl = 'https://footyverse-backend.onrender.com';
 
     constructor(private http: HttpClient) { }
 

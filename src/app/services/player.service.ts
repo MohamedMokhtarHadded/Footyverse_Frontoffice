@@ -6,7 +6,7 @@ import { Player } from 'src/models/Player';
   providedIn: 'root'
 })
 export class PlayerService {
-  private baseUrl = 'http://localhost:3000/player';
+  private baseUrl = 'https://footyverse-backend.onrender.com/player';
 
   constructor(private http: HttpClient) { }
 

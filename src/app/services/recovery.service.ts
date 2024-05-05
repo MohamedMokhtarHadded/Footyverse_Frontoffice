@@ -8,18 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RecoveryService {
-  private baseUrl = 'http://localhost:3000/recovery';
+  private baseUrl = 'https://footyverse-backend.onrender.com/recovery';
 
   constructor(private http: HttpClient) { }
-
-  /*
-  router.post('/add', addRecovery);
-router.put('/update/:id', updateRecovery);
-router.delete('/delete/:id', deleteRecovery);
-router.get('/', getRecoveryList);
-router.get('/:id', getRecoveryById);
-router.get('/player/:player', getRecoveryListByPlayer);
-*/
 
 
 addRecovery(recovery: Recovery): Observable<Recovery> {

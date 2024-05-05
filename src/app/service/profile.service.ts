@@ -10,7 +10,7 @@ import { UserProfile } from '../user-module/user-form/user-form.component';
 })
 export class ProfileService {
 
-  SERVER_URL: string = "http://localhost:3000";
+  SERVER_URL: string = "https://footyverse-backend.onrender.com";
   constructor(private httpClient: HttpClient) { }
 
   // Get all formations
@@ -21,7 +21,7 @@ export class ProfileService {
 
   // Get Formation By id
   public getUserProfile(id: any) {
-    return this.httpClient.get<{ formation: any }>(`http://localhost:3000/userProfile?id=${id}`, { responseType: "json" });
+    return this.httpClient.get<{ formation: any }>(`https://footyverse-backend.onrender.com/userProfile?id=${id}`, { responseType: "json" });
   }
 
   fetchFile(fileUrl: string): Observable<Blob> {

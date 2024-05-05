@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NotificaionService {
 
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'https://footyverse-backend.onrender.com';
 
   constructor(private http: HttpClient) { }
 

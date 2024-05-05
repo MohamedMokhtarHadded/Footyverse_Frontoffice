@@ -10,7 +10,7 @@ import { User } from 'src/models/User';
 export class UserServiceService {
   public connetedUser!: User | null;
 
-  SERVER_URL: string = "http://localhost:3000/user";
+  SERVER_URL: string = "https://footyverse-backend.onrender.com/user";
   constructor(private httpClient: HttpClient) { }
 
 

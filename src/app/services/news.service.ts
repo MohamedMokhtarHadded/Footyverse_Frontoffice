@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NewsService {
-  private apiUrl = 'http://localhost:3000/sports-headlines'; // Update URL based on your Express API endpoint
+  private apiUrl = 'https://footyverse-backend.onrender.com/sports-headlines';
 
   constructor(private http: HttpClient) {}
 

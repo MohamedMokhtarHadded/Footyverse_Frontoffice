@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class InjuryService {
-    private baseUrl = 'http://localhost:3000';
+    private baseUrl = 'https://footyverse-backend.onrender.com';
 
     constructor(private http: HttpClient) { }
 
